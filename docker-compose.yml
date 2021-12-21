@@ -1,0 +1,22 @@
+version: "3"
+services:
+  postgres:
+    container_name: pg-funcioarios
+    restart: always
+    image: postgres:latest
+    networks:
+      - funcioarios
+    expose:
+      - 5432
+    environment:
+      - POSTGRES_USER=nestjs
+      - POSTGRES_PASSWORD=IrishCoffe@21
+      - POSTGRES_DB=logs
+    volumes:
+      - ../database-funcionarios:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+networks:
+  funcioarios:
+    driver: bridge
